@@ -12,8 +12,7 @@ You can select a different note by pressing the ```UP``` or ```DOWN``` button.
 In the configuration of the SuuntoPlus app, you can define a font size. As shown below, chosing a larger font size gives you less characters than a smaller font size
 
 
-
 | Size | Large     | Medium | Small | X-Small | 
-| --- | --------- | ------ | ----- | ------- |
+| :--- | :---------: | :------: | :-----: | :-------: |
 | __Template__ | t-l.html   | t-m.html  | t-s.html | t-xs.html | 
 | __Example__ | ![](./images/font-l.jpg) | ![](./images/font-m.jpg)  | ![](./images/font-s.jpg) | ![](./images/font-xs.jpg) |

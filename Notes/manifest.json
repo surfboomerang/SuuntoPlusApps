@@ -1,0 +1,39 @@
+{
+  "name": "Notes",
+  "version": "1.0",
+  "author": "Surfboomerang",
+  "description": "Keep important information in your watch with some personal notes",
+  "type": "feature",
+  "usage": "workout",
+  "modificationTime": 1773309159,
+  "in": [],
+  "out": [],
+  "template": [
+    {
+      "name": "t-l.html"
+    },
+    {
+      "name": "t-m.html"
+    },
+    {
+      "name": "t-s.html"
+    },
+    {
+      "name": "t-xs.html"
+    }
+  ],
+  "settings": [
+    {"shownName": "Text size", "path": "textSize.size", "type":"enum", "valuePath": "textSize.sizes", "mandatory": ""},
+    {"shownName": "Note 1", "path": "notes.note1", "type": "string"},
+    {"shownName": "Note 2", "path": "notes.note2", "type": "string"},
+    {"shownName": "Note 3", "path": "notes.note3", "type": "string"},
+    {"shownName": "Note 4", "path": "notes.note4", "type": "string"},
+    {"shownName": "Note 5", "path": "notes.note5", "type": "string"},
+    {"shownName": "Note 6", "path": "notes.note6", "type": "string"},
+    {"shownName": "Note 7", "path": "notes.note7", "type": "string"},
+    {"shownName": "Note 8", "path": "notes.note8", "type": "string"},
+    {"shownName": "Note 9", "path": "notes.note9", "type": "string"},
+    {"shownName": "Note 10", "path": "notes.note10", "type": "string"}
+
+  ]
+}

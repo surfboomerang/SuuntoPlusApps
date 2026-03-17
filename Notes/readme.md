@@ -48,6 +48,3 @@ None
 | Note 8  | string | Text for note |
 | Note 9  | string | Text for note |
 | Note 10  | string | Text for note |
-
----
-# Templates

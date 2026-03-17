@@ -1,4 +1,22 @@
-<uiView>
+<uiView onLoad="
+
+var fontSize=1;
+setStyle('#noteText-'+ fontSize, 'visibility', 'visible');
+control('#noteText-'+ fontSize, 'REFRESH');
+
+function increaseFontSize(){
+  setStyle('#noteText-' + fontSize, 'visibility', 'hidden');
+  fontSize++;
+  setStyle('#noteText-' + fontSize, 'visibility', 'visible');
+}
+
+function decreaseFontSize(){
+  setStyle('#noteText-' + fontSize, 'visibility', 'hidden');
+  fontSize--;
+  setStyle('#noteText-' + fontSize, 'visibility', 'visible');
+}
+
+">
 
   <div id="suuntoplus">
 
@@ -7,10 +25,10 @@
     </div>
 
 
-    <div class="sp-t-l p-hc" style="top:22%;left:10%;width:80%;height:58%;white-space:wrap;visibility: hidden" id="noteText-0">Loading notes...</div>
-    <div class="sp-t-m p-hc" style="top:22%;left:10%;width:80%;height:58%;white-space:wrap;visibility: hidden" id="noteText-1">Loading notes...</div>
-    <div class="sp-t-s p-hc" style="top:22%;left:10%;width:80%;height:58%;white-space:wrap;visibility: hidden" id="noteText-2">Loading notes...</div>
-    <div class="p-hc" style="top:22%;left:10%;width:80%;height:58%;white-space:wrap;visibility: hidden" id="noteText-3">Loading notes...</div>
+    <div class="sp-t-l p-hc" style="top:22%;left:10%;width:80%;height:58%;white-space:wrap;visibility: hidden" id="noteText-3">Loading notes...</div>
+    <div class="sp-t-m p-hc" style="top:22%;left:10%;width:80%;height:58%;white-space:wrap;visibility: hidden" id="noteText-2">Loading notes...</div>
+    <div class="sp-t-s p-hc" style="top:22%;left:10%;width:80%;height:58%;white-space:wrap;visibility: visible" id="noteText-1">Loading notes...</div>
+    <div class="p-hc" style="top:22%;left:10%;width:80%;height:58%;white-space:wrap;visibility: hidden" id="noteText-0">Loading notes...</div>
 
     <div class="cm-fg" style="top:80%;width:100%;height:20%;">
       <div class="sp-t-m p-hc" optional style="top:calc(50% - 50%e);" id="noteFooter">0 / 0</div>
@@ -18,8 +36,8 @@
   </div>
 
   <userInput>
-    <pushButton name="up" onClick="$.put('/Zapp/{zapp_index}/Event', 1, null, 'int32');" onLongPress="$.put('/Zapp/{zapp_index}/Event', 2, null, 'int32');" />
-    <pushButton name="down" onClick="$.put('/Zapp/{zapp_index}/Event', 3, null, 'int32');" onLongPress="$.put('/Zapp/{zapp_index}/Event', 4, null, 'int32');" />
+    <pushButton name="up" onClick="$.put('/Zapp/{zapp_index}/Event', 1, null, 'int32');" onLongPress="increaseFontSize();$.put('/Zapp/{zapp_index}/Event', 2, null, 'int32');" />
+    <pushButton name="down" onClick="$.put('/Zapp/{zapp_index}/Event', 3, null, 'int32');" onLongPress="decreaseFontSize();$.put('/Zapp/{zapp_index}/Event', 4, null, 'int32');" />
   </userInput>
 
 </uiView>

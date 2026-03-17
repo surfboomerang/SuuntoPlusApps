@@ -10,16 +10,7 @@
   "out": [],
   "template": [
     {
-      "name": "t-l.html"
-    },
-    {
-      "name": "t-m.html"
-    },
-    {
-      "name": "t-s.html"
-    },
-    {
-      "name": "t-xs.html"
+      "name": "t.html"
     }
   ],
   "settings": [
@@ -34,6 +25,5 @@
     {"shownName": "Note 8", "path": "notes.note8", "type": "string"},
     {"shownName": "Note 9", "path": "notes.note9", "type": "string"},
     {"shownName": "Note 10", "path": "notes.note10", "type": "string"}
-
   ]
 }

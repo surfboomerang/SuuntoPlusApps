@@ -8,14 +8,14 @@ var noteTextId
 
 function evaluate(input, output) {
   noteTextId = "#noteText-" + currentTextSize;
-  setStyle(noteTextId, "visibility", "visible");
+
     if (numberOfNotes > 0) {
       setText("#noteFooter", notesIndex + " / " + numberOfNotes);
       setText(noteTextId, notes['note' + notesIndex]);
     } else {
       setText("#noteText", "No notes");
     }
-  
+
 }
 
 function onLoad(input, output) {
@@ -47,9 +47,8 @@ function onEvent(_input, output, eventId) {
       break;
 
     // Top button long pressed
-    case 2:
+    case 4:
       if (currentTextSize > 0) {
-        setStyle(noteTextId, "visibility", "hidden");
         currentTextSize--;
       }
       break;
@@ -62,9 +61,8 @@ function onEvent(_input, output, eventId) {
       break;
 
     // Bottom button long pressed
-    case 4:   
-      if (currentTextSize < Object.keys(textSizes).length-1) {
-        setStyle(noteTextId, "visibility", "hidden");
+    case 2:
+      if (currentTextSize < Object.keys(textSizes).length - 1) {
         currentTextSize++;
       }
       break;

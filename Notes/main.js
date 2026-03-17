@@ -2,16 +2,20 @@ var textSize = 0;
 var notes = [];
 var numberOfNotes = 0;
 var notesIndex = 1;
-
-
+var textSizes;
+var currentTextSize;
+var noteTextId
 
 function evaluate(input, output) {
-  if (numberOfNotes > 0) {
-    setText("#noteFooter", notesIndex + " / " + numberOfNotes);
-    setText("#noteText", notes['note' + notesIndex]);
-  }else{
-    setText("#noteText", "No notes");
-  }
+  noteTextId = "#noteText-" + currentTextSize;
+  setStyle(noteTextId, "visibility", "visible");
+    if (numberOfNotes > 0) {
+      setText("#noteFooter", notesIndex + " / " + numberOfNotes);
+      setText(noteTextId, notes['note' + notesIndex]);
+    } else {
+      setText("#noteText", "No notes");
+    }
+  
 }
 
 function onLoad(input, output) {
@@ -27,7 +31,9 @@ function onLoad(input, output) {
 
   numberOfNotes = Object.keys(notes).length;
 
-  textSize = (localStorage.getObject("textSize")).size;
+  textSizes = localStorage.getObject("textSize").sizes;
+  currentTextSize = localStorage.getObject("textSize").size;
+  noteTextId = "#noteText-" + currentTextSize;
 }
 
 function onEvent(_input, output, eventId) {
@@ -40,29 +46,32 @@ function onEvent(_input, output, eventId) {
       }
       break;
 
-    // Bottom button pressed
+    // Top button long pressed
     case 2:
+      if (currentTextSize > 0) {
+        setStyle(noteTextId, "visibility", "hidden");
+        currentTextSize--;
+      }
+      break;
+
+    // Bottom button pressed
+    case 3:
       if (notesIndex < numberOfNotes) {
         notesIndex++;
+      }
+      break;
+
+    // Bottom button long pressed
+    case 4:   
+      if (currentTextSize < Object.keys(textSizes).length-1) {
+        setStyle(noteTextId, "visibility", "hidden");
+        currentTextSize++;
       }
       break;
   }
 }
 
 function getUserInterface() {
-  switch (textSize){
-    case 0:
-      return {template: "t-l"};
-
-    case 1:
-      return {template: "t-m"};
-
-    case 2: 
-    return {template: "t-s"};
-
-    case 3:
-      return {template: "t-xs"};
-        }
-    
+  return { template: "t" };
 }
 

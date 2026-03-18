@@ -47,9 +47,11 @@ function onEvent(_input, output, eventId) {
       break;
 
     // Top button long pressed
-    case 4:
-      if (currentTextSize > 0) {
-        currentTextSize--;
+    case 2:
+      if (currentTextSize < Object.keys(textSizes).length - 1) {
+        currentTextSize++;
+      }else{
+        currentTextSize = 0
       }
       break;
 
@@ -61,15 +63,20 @@ function onEvent(_input, output, eventId) {
       break;
 
     // Bottom button long pressed
-    case 2:
-      if (currentTextSize < Object.keys(textSizes).length - 1) {
-        currentTextSize++;
+    case 4:
+      if (currentTextSize > 0) {
+        currentTextSize--;
+      }else{
+        currentTextSize = Object.keys(textSizes).length - 1;
       }
       break;
   }
 }
 
 function getUserInterface() {
-  return { template: "t" };
+  return { 
+    template: "t", 
+    textSize: { size: currentTextSize }
+   };
 }
 

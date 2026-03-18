@@ -1,7 +1,7 @@
 {
     "notes": {
-        "note1": "slfksjd slfdslfjs dlfksdjflsdkjfdsfj sdlfjsdlksdjlfksjd ",
-        "note2": "slfkjsdlsjosuoiuoiwjoijflsjsdkhfsdlfj dslfjslsjfl dsfsd ",
+        "note1": null,
+        "note2": null,
         "note3": null,
         "note4": null,
         "note5": null,
@@ -13,11 +13,11 @@
     },
     "textSize": {
         "sizes": [
-            "Large",
-            "Medium",
+            "X-Small",
             "Small",
-            "X-Small"
+            "Medium",
+            "Large" 
         ],
-        "size": 1
+        "size": 2
     }
 }

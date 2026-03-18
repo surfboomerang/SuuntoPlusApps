@@ -12,18 +12,20 @@ When you start an activity and select "Notes" as a SuuntoPlus app, your notes wi
 | Button | Action | 
 | ------  | ------ |
 | UP | Select previous note | 
+| UP-HOLD | Zoom in | 
 | DOWN | Select next note | 
+| DOWN-HOLD | Zoom out |
 
-
-## Font sizes
+## Font sizes (Zoom)
 > [!IMPORTANT]
 > Be aware that you can not scroll through the text of a note. Depending on the font size, more or fewer characters can be shown on the screen. 
-In the configuration of the SuuntoPlus app, you can define a font size. As shown below, chosing a larger font size gives you less characters than a smaller font size
+
+In the configuration of the SuuntoPlus app, you can define a default font size. As shown below, chosing a larger font size gives you less characters than a smaller font size.
+When the SuuntoPlus app is active, you can change the font size by holding the ```UP``` or ```DOWN``` button. 
 
 
 | Size | Large     | Medium | Small | X-Small | 
 | :--- | :---------: | :------: | :-----: | :-------: |
-| __Template__ | t-l.html   | t-m.html  | t-s.html | t-xs.html | 
 |   | ![](./images/font-l.jpg) | ![](./images/font-m.jpg)  | ![](./images/font-s.jpg) | ![](./images/font-xs.jpg) |
 
 # Manifest

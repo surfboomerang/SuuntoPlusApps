@@ -1,0 +1,60 @@
+{
+  "name": "Speedsurfing",
+  "version": "1.0",
+  "author": "Surfboomerang",
+  "description": "Shows your speeds in the GP3S categories",
+  "type": "feature",
+  "usage": "workout",
+  "modificationTime": 1773309159,
+  "in": [
+    {
+      "name": "Speed",
+      "source": "/Activity/Move/-1/Speed/Current",
+      "type": "subscribe"
+    },
+    {
+      "name": "Distance",
+      "source": "/Activity/Move/-1/Distance/Current",
+      "type": "subscribe"
+    },
+    {
+      "name": "Location",
+      "source": "/Fusion/Location/GeoCoordinates",
+      "type": "subscribe"
+    }    
+  ],
+  "out": [
+    {
+      "name": "t2"
+    },
+    {
+      "name": "t10"
+    },
+    {
+      "name": "t1800"
+    },
+    {
+      "name": "t3600"
+    },
+    {
+      "name": "d100"
+    },
+    {
+      "name": "d250"
+    },
+    {
+      "name": "d500"
+    },
+    {
+      "name": "d1852"
+    },
+    {
+      "name": "alpha"
+    }
+  ],
+  "template": [
+    {
+      "name": "t.html"
+    }
+  ]
+}

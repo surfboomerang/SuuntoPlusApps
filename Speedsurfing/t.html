@@ -1,0 +1,85 @@
+<!-- SuuntoPlus: Template with 5 fields and value icons -->
+<uiView>
+
+  <div id="suuntoplus">
+
+
+    <!-- Title and its background -->
+    <div class="cm-fg" style="width:100%;height:20%">
+      <div class="sp-t-s p-hc" style="top:calc(35% - 50%e)">
+        Speedsurfing
+      </div>
+      <div class="sp-t-s p-hc" style="top:calc(70% - 50%e)">
+        Units: km/h
+      </div>
+    </div>
+
+    <!-- vertical separator -->
+    <div class="cm-fg p-hc" style="top:20%;width:2px;height:55%;opacity:0.4"></div>
+
+    <!-- Time categories -->
+    <!-- 2 sec -->
+    <span class="sp-t-s" style="top:25%;left:calc(15% - 50%e)">2s</span>
+    <span class="sp-d-xs f-num" style="top:20%;left:27%">
+      <eval input="Zapp/{zapp_index}/Output/t2" outputFormat="Speed_Fourdigits" default="--" />
+    </span>
+
+    <!-- 10 sec -->
+    <span class="sp-t-s" style="top:38%;left:calc(15% - 50%e)">10s</span>
+    <span class="sp-d-xs f-num" style="top:33%;left:27%">
+      <eval input="Zapp/{zapp_index}/Output/t10" outputFormat="Speed_Fourdigits" default="--" />
+    </span>
+
+    <!-- 1800 sec -->
+    <span class="sp-t-s" style="top:51%;left:calc(15% - 50%e)">1/2h</span>
+    <span class="sp-d-xs f-num" style="top:46%;left:27%">
+      <eval input="Zapp/{zapp_index}/Output/t1800" outputFormat="Speed_Fourdigits" default="--" />
+    </span>
+
+
+    <!-- 3600 sec -->
+    <span class="sp-t-s" style="top:64%;left:calc(15% - 50%e)">1h</span>
+    <span class="sp-d-xs f-num" style="top:59%;left:27%">
+      <eval input="Zapp/{zapp_index}/Output/t3600" outputFormat="Speed_Fourdigits" default="--" />
+    </span>
+
+
+
+
+    <!-- distance categories -->
+    <!-- 100m -->
+    <div class="sp-d-xs f-num" style="top:20%;left:calc(63% - 50%e);text-align: right;">
+      <eval input="Zapp/{zapp_index}/Output/d100" outputFormat="Speed_Fourdigits" default="--" />
+    </div>
+    <div class="sp-t-s" style="top:25%;left:75%;">100m</div>
+
+    <!-- 250m-->
+    <span class="sp-d-xs f-num" style="top:33%;left:calc(63% - 50%e)">
+      <eval input="Zapp/{zapp_index}/Output/d250" outputFormat="Speed_Fourdigits" default="--" />
+    </span>
+    <span class="sp-t-s" style="top:38%;left:75%">250m</span>
+
+    <!-- 500m -->
+    <span class="sp-d-xs f-num" style="top:46%;left:calc(63% - 50%e)">
+      <eval input="Zapp/{zapp_index}/Output/d500" outputFormat="Speed_Fourdigits" default="--" />
+    </span>
+    <span class="sp-t-s" style="top:51%;left:75%">500m</span>
+
+
+    <!-- 1852m -->
+    <span class="sp-d-xs f-num" style="top:59%;left:calc(63% - 50%e)">
+      <eval input="Zapp/{zapp_index}/Output/d1852" outputFormat="Speed_Fourdigits" default="--" />
+    </span>
+    <span class="sp-t-s" style="top:64%;left:75%">1852m</span>
+
+
+    <!-- bottom middle -->
+    <span class="sp-t-s p-hc" style="top:76%">Alpha</span>
+    <span class="sp-d-xs f-num p-hc" style="top:84%">
+      <eval input="Zapp/{zapp_index}/Output/alpha" outputFormat="Speed_Fourdigits" default="--" />
+    </span>
+
+
+  </div>
+
+</uiView>

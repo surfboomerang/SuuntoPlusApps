@@ -1,4 +1,5 @@
 # SuuntoPlus apps -  Notes
+![](./images/banner.png)
 
 Create up to 10 personal notes which can be read during your activity.
 
@@ -26,7 +27,7 @@ When the SuuntoPlus app is active, you can change the font size by holding the `
 
 | Size | Large     | Medium | Small | X-Small | 
 | :--- | :---------: | :------: | :-----: | :-------: |
-|   | ![](./images/font-l.jpg) | ![](./images/font-m.jpg)  | ![](./images/font-s.jpg) | ![](./images/font-xs.jpg) |
+|   | ![](./images/notes-l.png) | ![](./images/notes-m.png)  | ![](./images/notes-s.png) | ![](./images/notes-xs.png) |
 
 # Manifest
 

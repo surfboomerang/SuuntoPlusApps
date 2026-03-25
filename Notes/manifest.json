@@ -15,15 +15,15 @@
   ],
   "settings": [
     {"shownName": "Text size", "path": "textSize.size", "type":"enum", "valuePath": "textSize.sizes", "mandatory": ""},
-    {"shownName": "Note 1", "path": "notes.note1", "type": "string"},
-    {"shownName": "Note 2", "path": "notes.note2", "type": "string"},
-    {"shownName": "Note 3", "path": "notes.note3", "type": "string"},
-    {"shownName": "Note 4", "path": "notes.note4", "type": "string"},
-    {"shownName": "Note 5", "path": "notes.note5", "type": "string"},
-    {"shownName": "Note 6", "path": "notes.note6", "type": "string"},
-    {"shownName": "Note 7", "path": "notes.note7", "type": "string"},
-    {"shownName": "Note 8", "path": "notes.note8", "type": "string"},
-    {"shownName": "Note 9", "path": "notes.note9", "type": "string"},
-    {"shownName": "Note 10", "path": "notes.note10", "type": "string"}
+    {"shownName": "Note 1", "path": "notes.note1", "type": "string", "maxLength": 1200},
+    {"shownName": "Note 2", "path": "notes.note2", "type": "string", "maxLength": 1200},
+    {"shownName": "Note 3", "path": "notes.note3", "type": "string", "maxLength": 1200},
+    {"shownName": "Note 4", "path": "notes.note4", "type": "string", "maxLength": 1200},
+    {"shownName": "Note 5", "path": "notes.note5", "type": "string", "maxLength": 1200},
+    {"shownName": "Note 6", "path": "notes.note6", "type": "string", "maxLength": 1200},
+    {"shownName": "Note 7", "path": "notes.note7", "type": "string", "maxLength": 1200},
+    {"shownName": "Note 8", "path": "notes.note8", "type": "string", "maxLength": 1200},
+    {"shownName": "Note 9", "path": "notes.note9", "type": "string", "maxLength": 1200},
+    {"shownName": "Note 10", "path": "notes.note10", "type": "string", "maxLength": 1200}
   ]
 }

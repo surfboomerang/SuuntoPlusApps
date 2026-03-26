@@ -1,22 +1,19 @@
 {
-    "notes": {
-        "note1": null,
-        "note2": null,
-        "note3": null,
-        "note4": null,
-        "note5": null,
-        "note6": null,
-        "note7": null,
-        "note8": null,
-        "note9": null,
-        "note10": null
-    },
+    "note1": null,
+    "note2": null,
+    "note3": null,
+    "note4": null,
+    "note5": null,
+    "note6": null,
+    "note7": null,
+    "note8": null,
+    "note9": null,
+    "note10": null,
     "textSize": {
         "sizes": [
-            "X-Small",
-            "Small",
-            "Medium",
-            "Large" 
+            "S",
+            "M",
+            "L"
         ],
         "size": 1
     }

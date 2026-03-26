@@ -1,82 +1,76 @@
-var textSize = 0;
-var notes = [];
-var numberOfNotes = 0;
 var notesIndex = 1;
+var noteText;
+var noteTextId;
 var textSizes;
 var currentTextSize;
-var noteTextId
+var numberOfNotes = 10;
 
 function evaluate(input, output) {
-  noteTextId = "#noteText-" + currentTextSize;
+  
+  navigate('#uiViewSet1', currentTextSize);
+  setText("#noteFooter", notesIndex + " / " + numberOfNotes);
 
-    if (numberOfNotes > 0) {
-      setText("#noteFooter", notesIndex + " / " + numberOfNotes);
-      setText(noteTextId, notes['note' + notesIndex]);
+    if (noteText != null) {
+      setText(noteTextId, noteText);
     } else {
-      setText("#noteText", "No notes");
+      setText(noteTextId, "Empty note");
     }
 
 }
 
 function onLoad(input, output) {
-  var userNotes = localStorage.getObject("notes");
-
-  var index = 1;
-  for (var key in userNotes) {
-    if (userNotes[key] !== null) {
-      notes["note" + index] = userNotes[key]
-      index++;
-    }
-  }
-
-  numberOfNotes = Object.keys(notes).length;
-
-  textSizes = localStorage.getObject("textSize").sizes;
   currentTextSize = localStorage.getObject("textSize").size;
+  textSizes = Object.keys(localStorage.getObject("textSize").sizes).length;
+
   noteTextId = "#noteText-" + currentTextSize;
+  noteText = localStorage.getItem("note"+notesIndex);
 }
 
 function onEvent(_input, output, eventId) {
   switch (eventId) {
 
-    // Top button pressed
+    // Up
     case 1:
       if (notesIndex > 1) {
         notesIndex--;
-      }
+      }else{notesIndex = numberOfNotes}
       break;
 
-    // Top button long pressed
+    // Up-hold
     case 2:
-      if (currentTextSize < Object.keys(textSizes).length - 1) {
+      if (currentTextSize < textSizes - 1) {
         currentTextSize++;
       }else{
-        currentTextSize = 0
+        currentTextSize = 0;
       }
       break;
 
-    // Bottom button pressed
+    // Down
     case 3:
       if (notesIndex < numberOfNotes) {
         notesIndex++;
+      }else{
+        notesIndex = 1;
       }
       break;
 
-    // Bottom button long pressed
+    // Down-hold
     case 4:
       if (currentTextSize > 0) {
         currentTextSize--;
       }else{
-        currentTextSize = Object.keys(textSizes).length - 1;
+        currentTextSize = textSizes - 1;
       }
       break;
   }
+
+  noteTextId = "#noteText-" + currentTextSize;
+  noteText = localStorage.getItem("note"+notesIndex);
 }
 
 function getUserInterface() {
   return { 
-    template: "t", 
-    textSize: { size: currentTextSize }
+    template: "t"
    };
 }
 

@@ -1,4 +1,4 @@
-![](https://upload.wikimedia.org/wikipedia/commons/3/39/Suunto_Logo.jpg)
+![](./Banner.jpg)
 
 # SuuntoPlus Apps
 

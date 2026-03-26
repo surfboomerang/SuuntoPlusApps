@@ -1,5 +1,5 @@
 # SuuntoPlus apps -  Notes
-![](./images/banner.png)
+![](./images/banner-xl.png)
 
 Create up to 10 personal notes which can be read during your activity.
 

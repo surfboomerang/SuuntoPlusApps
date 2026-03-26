@@ -65,7 +65,7 @@ function onEvent(_input, output, eventId) {
   }
 
   noteTextId = "#noteText-" + currentTextSize;
-  noteText = localStorage.getObject("note"+notesIndex);
+  noteText = localStorage.getItem("note"+notesIndex);
 }
 
 function getUserInterface() {

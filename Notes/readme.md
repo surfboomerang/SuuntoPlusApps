@@ -25,9 +25,9 @@ In the configuration of the SuuntoPlus app, you can define a default font size. 
 When the SuuntoPlus app is active, you can change the font size by holding the ```UP``` or ```DOWN``` button. 
 
 
-| Size | Large     | Medium | Small | X-Small | 
-| :--- | :---------: | :------: | :-----: | :-------: |
-|   | ![](./images/notes-l.png) | ![](./images/notes-m.png)  | ![](./images/notes-s.png) | ![](./images/notes-xs.png) |
+| Size | Large     | Medium | Small | 
+| :--- | :---------: | :------: | :-----: |
+|   | ![](./images/notes-l.png) | ![](./images/notes-m.png)  | ![](./images/notes-s.png) |
 
 # Manifest
 

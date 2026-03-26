@@ -1,7 +1,7 @@
 var notesIndex = 1;
 var noteText;
 var noteTextId;
-var textSizes = 4;
+var textSizes = 3;
 var currentTextSize;
 var numberOfNotes = 10;
 
@@ -35,7 +35,7 @@ function onEvent(_input, output, eventId) {
 
     // Up-hold
     case 2:
-      if (currentTextSize < textSizes) {
+      if (currentTextSize < textSizes - 1) {
         currentTextSize++;
       }else{
         currentTextSize = 0;
@@ -67,8 +67,7 @@ function onEvent(_input, output, eventId) {
 
 function getUserInterface() {
   return { 
-    template: "t", 
-    textSize: { size: currentTextSize }
+    template: "t"
    };
 }
 

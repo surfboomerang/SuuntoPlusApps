@@ -1,12 +1,13 @@
 var notesIndex = 1;
 var noteText;
 var noteTextId;
-var textSizes = 3;
+var textSizes;
 var currentTextSize;
 var numberOfNotes = 10;
 
 function evaluate(input, output) {
   
+  navigate('#uiViewSet1', currentTextSize);
   setText("#noteFooter", notesIndex + " / " + numberOfNotes);
 
     if (noteText != null) {
@@ -19,8 +20,10 @@ function evaluate(input, output) {
 
 function onLoad(input, output) {
   currentTextSize = localStorage.getObject("textSize").size;
+  textSizes = Object.keys(localStorage.getObject("textSize").sizes).length;
+
   noteTextId = "#noteText-" + currentTextSize;
-  noteText = localStorage.getObject("note"+notesIndex);
+  noteText = localStorage.getItem("note"+notesIndex);
 }
 
 function onEvent(_input, output, eventId) {
@@ -56,7 +59,7 @@ function onEvent(_input, output, eventId) {
       if (currentTextSize > 0) {
         currentTextSize--;
       }else{
-        currentTextSize = textSizes;
+        currentTextSize = textSizes - 1;
       }
       break;
   }

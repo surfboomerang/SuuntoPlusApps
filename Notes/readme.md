@@ -13,9 +13,9 @@ When you start an activity and select "Notes" as a SuuntoPlus app, your notes wi
 | Button | Action | 
 | ------  | ------ |
 | UP | Select previous note | 
-| UP-HOLD | Zoom in | 
+| UP (hold) | Zoom in | 
 | DOWN | Select next note | 
-| DOWN-HOLD | Zoom out |
+| DOWN (hold) | Zoom out |
 
 ## Font sizes (Zoom)
 > [!IMPORTANT]

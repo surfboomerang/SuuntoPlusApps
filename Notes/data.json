@@ -11,9 +11,9 @@
     "note10": null,
     "textSize": {
         "sizes": [
-            "S",
-            "M",
-            "L"
+            "Small",
+            "Medium",
+            "Large"
         ],
         "size": 1
     }

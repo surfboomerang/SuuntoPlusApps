@@ -1,7 +1,7 @@
 var notesIndex = 1;
 var noteText;
 var noteTextId;
-var textSizes;
+var textSizes = 3;
 var currentTextSize;
 var numberOfNotes = 10;
 
@@ -38,8 +38,7 @@ function evaluate(input, output) {
 }
 
 function onLoad(input, output) {
-  currentTextSize = localStorage.getObject("textSize").size;
-  textSizes = Object.keys(localStorage.getObject("textSize").sizes).length;
+  currentTextSize = parseInt(localStorage.getItem("textSize"));
 
   removeEmptyNotes();
   noteTextId = "#noteText-" + currentTextSize;

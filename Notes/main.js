@@ -9,7 +9,7 @@ var removeEmptyNotes = function () {
   var j = 1;
   for (var i = 1; i < 11; i++) {
     noteText = localStorage.getItem("note" + i);
-    if (noteText != null) {
+    if (noteText) {
       localStorage.setItem("note" + j, noteText);
       j++;
     }

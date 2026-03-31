@@ -9,12 +9,5 @@
     "note8": null,
     "note9": null,
     "note10": null,
-    "textSize": {
-        "sizes": [
-            "Small",
-            "Medium",
-            "Large"
-        ],
-        "size": 1
-    }
+    "textSize": "1"
 }

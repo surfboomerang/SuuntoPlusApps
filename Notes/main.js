@@ -1,29 +1,48 @@
 var notesIndex = 1;
 var noteText;
 var noteTextId;
-var textSizes;
+var textSizes = 3;
 var currentTextSize;
 var numberOfNotes = 10;
 
+var removeEmptyNotes = function () {
+  var j = 1;
+  for (var i = 1; i < 11; i++) {
+    noteText = localStorage.getItem("note" + i);
+    if (noteText != null) {
+      localStorage.setItem("note" + j, noteText);
+      j++;
+    }
+  }
+  numberOfNotes = j - 1;
+  if (j == 1) {
+    notesIndex = 0;
+  }
+}
+
 function evaluate(input, output) {
-  
+
   navigate('#uiViewSet1', currentTextSize);
   setText("#noteFooter", notesIndex + " / " + numberOfNotes);
 
-    if (noteText != null) {
-      setText(noteTextId, noteText);
+  if (noteText != null) {
+    setText(noteTextId, noteText);
+  } else {
+    if (numberOfNotes == 0) {
+      setText(noteTextId, "No notes");
     } else {
       setText(noteTextId, "Empty note");
     }
+  }
 
 }
 
 function onLoad(input, output) {
-  currentTextSize = localStorage.getObject("textSize").size;
-  textSizes = Object.keys(localStorage.getObject("textSize").sizes).length;
+  currentTextSize = parseInt(localStorage.getItem("textSize"));
 
+  removeEmptyNotes();
   noteTextId = "#noteText-" + currentTextSize;
-  noteText = localStorage.getItem("note"+notesIndex);
+  noteText = localStorage.getItem("note" + notesIndex);
 }
 
 function onEvent(_input, output, eventId) {
@@ -33,14 +52,14 @@ function onEvent(_input, output, eventId) {
     case 1:
       if (notesIndex > 1) {
         notesIndex--;
-      }else{notesIndex = numberOfNotes}
+      } else { notesIndex = numberOfNotes }
       break;
 
     // Up-hold
     case 2:
       if (currentTextSize < textSizes - 1) {
         currentTextSize++;
-      }else{
+      } else {
         currentTextSize = 0;
       }
       break;
@@ -49,8 +68,10 @@ function onEvent(_input, output, eventId) {
     case 3:
       if (notesIndex < numberOfNotes) {
         notesIndex++;
-      }else{
-        notesIndex = 1;
+      } else {
+        if (numberOfNotes > 0) {
+          notesIndex = 1;
+        }
       }
       break;
 
@@ -58,19 +79,19 @@ function onEvent(_input, output, eventId) {
     case 4:
       if (currentTextSize > 0) {
         currentTextSize--;
-      }else{
+      } else {
         currentTextSize = textSizes - 1;
       }
       break;
   }
 
   noteTextId = "#noteText-" + currentTextSize;
-  noteText = localStorage.getItem("note"+notesIndex);
+  noteText = localStorage.getItem("note" + notesIndex);
 }
 
 function getUserInterface() {
-  return { 
+  return {
     template: "t"
-   };
+  };
 }
 

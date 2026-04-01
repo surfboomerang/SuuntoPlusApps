@@ -20,6 +20,10 @@ var removeEmptyNotes = function () {
   }
 }
 
+var replaceNewLineCharacter = function(){
+  noteText = (noteText.split("|")).join("\n");
+}
+
 function evaluate(input, output) {
 
   navigate('#uiViewSet1', currentTextSize);
@@ -43,6 +47,7 @@ function onLoad(input, output) {
   removeEmptyNotes();
   noteTextId = "#noteText-" + currentTextSize;
   noteText = localStorage.getItem("note" + notesIndex);
+  replaceNewLineCharacter();
 }
 
 function onEvent(_input, output, eventId) {
@@ -87,6 +92,7 @@ function onEvent(_input, output, eventId) {
 
   noteTextId = "#noteText-" + currentTextSize;
   noteText = localStorage.getItem("note" + notesIndex);
+  replaceNewLineCharacter();
 }
 
 function getUserInterface() {

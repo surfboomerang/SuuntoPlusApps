@@ -21,11 +21,11 @@ When you start an activity and select "Notes" as a SuuntoPlus app, your notes wi
 ### Text input
 | Input | Action | 
 | ----- | ------ | 
-| ```\n ``` | Inserts new line |
+| ``` \| ``` | Inserts new line |
 
 Example:
 ``` 
-This is \nthe text \nof a note
+This is |the text |of a note
 ```
 
 will be shown on the watch as:

@@ -10,12 +10,31 @@ When you start an activity and select "Notes" as a SuuntoPlus app, your notes wi
 
 ## Controls
 
+### Buttons
 | Button | Action | 
 | ------  | ------ |
 | UP | Select previous note | 
 | UP (hold) | Zoom in | 
 | DOWN | Select next note | 
 | DOWN (hold) | Zoom out |
+
+### Text input
+| Input | Action | 
+| ----- | ------ | 
+| ```\n ``` | Inserts new line |
+
+Example:
+``` 
+This is \nthe text \nof a note
+```
+
+will be shown on the watch as:
+
+```
+This is
+the text
+of a note
+```
 
 ## Font sizes (Zoom)
 > [!IMPORTANT]

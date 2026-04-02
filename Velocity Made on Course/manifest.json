@@ -1,0 +1,40 @@
+{
+  "name": "Velocity Made on Course (VMC)",
+  "version": "1.0",
+  "author": "Surfboomerang",
+  "description": "Calculates the Velocity Made on Course speed",
+  "type": "feature",
+  "usage": "workout",
+  "modificationTime": 1773309159,
+  "in": [
+    {
+      "name": "Speed",
+      "source": "/Activity/Current/Speed",
+      "type": "subscribe"
+    },
+    {
+      "name": "Location",
+      "source": "/Fusion/Location/GeoCoordinates",
+      "type": "subscribe"
+    },
+    {
+      "name": "Target",
+      "source": "/Navigation/Targetlocation/Coordinates",
+      "type": "subscribe"
+    }    
+  ],
+  "out": [
+    {
+      "name": "VMC",
+      "format": "float2d"
+    },
+    {
+      "name": "Speed"
+    }
+  ],
+  "template": [
+    {
+      "name": "t.html"
+    }
+  ]
+}

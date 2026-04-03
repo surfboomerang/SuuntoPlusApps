@@ -4,52 +4,56 @@
   <div id="suuntoplus">
 
     <!-- Title and its background -->
-    <div class="cm-fg" style="width:100%;height:25%">
+    <div class="cm-fg" style="width:100%;height:15%">
       <div class="sp-t-m p-hc" style="top:calc(60% - 50%e)">
         VMC
       </div>
     </div>
 
     <!-- vertical separator -->
-    <div class="cm-fg p-hc" style="top:34%;width:2px;height:30%;opacity:0.4"></div>
+    <div class="cm-fg p-hc" style="top:20%;width:2px;height:40%;opacity:0.4"></div>
 
     <!-- top -->
-        <!-- left -->
-        <div class="sp-t-s" style="top:calc(42% - 100%e);left:calc(26% - 50%e)">
-          Speed
-        </div>
-        <div class="sp-vertical-center" style="top:40%;left:calc(26% - 50%e)">
-          <span class="sp-d-s f-num">
-            <eval input="Zapp/{zapp_index}/Output/Speed" outputFormat="Speed_Threedigits" default="--" />
-          </span>
-          <span class="sp-b-s" style="padding-left:4px">
-            m/s
-          </span>
-        </div>
+    <!-- left -->
+    <div class="sp-t-s" style="top:calc(30% - 100%e);left:calc(26% - 50%e)">
+      Speed
+    </div>
+    <div class="sp-vertical-center" style="top:32%;left:calc(26% - 50%e)">
+      <span class="sp-d-s f-num">
+        <eval input="/Activity/Current/Speed" outputFormat="{zapp_speed_format}" default="--" />
+      </span>
+      <span optional>
+        <postfix />
+      </span>
+    </div>
 
-        <!-- right -->
-        <div class="sp-t-s" style="top:calc(42% - 100%e);left:calc(74% - 50%e)">
-          VMC
-        </div>
-        <div class="sp-vertical-center" style="top:40%;left:calc(74% - 50%e)">
-          <span id=vmc class="sp-d-s f-num">
-            <eval input="/Zapp/{zapp_index}/Output/VMC" outputFormat="float2d" default="--" />
-          </span>
-          <span class="sp-b-s" style="padding-left:4px">
-            m/s
-          </span>
-        </div>
+    <!-- right -->
+    <div class="sp-t-s" style="top:calc(30% - 100%e);left:calc(74% - 50%e)">
+      VMC
+    </div>
+    <div class="sp-vertical-center" style="top:32%;left:calc(74% - 50%e)">
+      <span class="sp-d-s f-num">
+        <eval input="/Zapp/{zapp_index}/Output/VMC" outputFormat="{zapp_speed_format}" default="--" />
+      </span>
+      <span optional>
+        <postfix />
+      </span>
+    </div>
 
 
 
     <!-- bottom -->
-    <!-- <div class="sp-t-s p-hc" style="top:calc(70% - 50%e)">
-      {zapp_bottom_title}
+    <div class="sp-t-s p-hc" style="top:calc(70% - 50%e)">
+      Distance to target
     </div>
-    <div class="sp-d-m f-num p-hc" style="top:calc(82% - 50%e)">
-      <eval input="{zapp_bottom_input}" outputFormat="{zapp_bottom_format}" default="--" />
-    </div> -->
-
+    <div class="p-hc" style="top:calc(82% - 50%e)">
+      <span class="sp-d-s f-num">
+      <eval input="/Navigation/Poi/Active/Distance" outputFormat="{zapp_distance_format}" default="--" />
+      </span>
+    <span optional class="sp-t-s">
+      <postfix />
+    </span>
+    </div>
   </div>
 
 </uiView>

@@ -1,47 +1,52 @@
-var calculateCoordinatesDistance = function (lat1, lon1, lat2, lon2) {
-  var R = 6371000; // Earth radius in meters
-  var dLat = (lat2 - lat1) * Math.PI / 180;
-  var dLon = (lon2 - lon1) * Math.PI / 180;
-  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-    Math.sin(dLon / 2) * Math.sin(dLon / 2);
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+var speed, heading, targetBearing, vmc;
+var nauticalSpeedFormat, nauticalDistanceFormat
+
+var radians_to_degrees =function(radians){
+  var pi = Math.PI;
+  return radians * (180/pi);
 }
 
-var distance = 0;
-var previousDistance = 0;
-var vmc = 0;
-
 function evaluate(input, output) {
-  distance = calculateCoordinatesDistance(input.Location.lat, input.Location.lon, input.Target.lat, input.Target.lon);
 
-  vmc = previousDistance - distance;
-  
-  if (vmc >= 0){
-    setStyle("#vmc", "color", "green");
-  }
-  if (vmc < 0){
-    setStyle("#vmc", "color", "red");
-  }
-  if (vmc == 0){
-    setStyle("#vmc", "color", "white");
-  }
+  speed = input.Speed;
+  heading = radians_to_degrees(input.Heading);
+  targetBearing = radians_to_degrees(input.TargetBearing);
 
-  output.Speed = input.Speed;
+  vmc = speed * Math.cos(heading - targetBearing);
+
   output.VMC = vmc;
-  previousDistance = distance;
 }
 
 function onLoad(input, output) {
+  nauticalSpeedFormat = localStorage.getObject('units').nauticalSpeed;
+  nauticalDistanceFormat = localStorage.getObject('units').nauticalDistance;
 }
 
 function onEvent(_input, output, eventId) {
-
 }
 
 function getUserInterface() {
+  var speedFormat;
+  if (nauticalSpeedFormat){
+    speedFormat = "NauticalSpeed_Fourdigits";
+  }else{
+    speedFormat = "Speed_Fourdigits";
+  }
+
+  var distanceFormat;
+  if (nauticalDistanceFormat){
+    distanceFormat = "NauticalDistance_Fivedigits";
+  }else{
+    distanceFormat = "Distance_Accurate";
+  }
+
+
   return {
-    template: "t"
+    template: "t",
+    speed:{format: speedFormat},
+    distance:{format: distanceFormat}
   };
 }
+
+// Todo Save VMC in logs
 

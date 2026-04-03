@@ -8,33 +8,33 @@
   "modificationTime": 1773309159,
   "in": [
     {
+      "name": "TargetBearing",
+      "source": "/Navigation/Targetlocation/Bearing",
+      "type": "subscribe"
+    },
+    {
+      "name": "Heading",
+      "source": "/Fusion/Heading",
+      "type": "subscribe"
+    },
+    {
       "name": "Speed",
       "source": "/Activity/Current/Speed",
       "type": "subscribe"
-    },
-    {
-      "name": "Location",
-      "source": "/Fusion/Location/GeoCoordinates",
-      "type": "subscribe"
-    },
-    {
-      "name": "Target",
-      "source": "/Navigation/Targetlocation/Coordinates",
-      "type": "subscribe"
-    }    
+    }
   ],
   "out": [
     {
-      "name": "VMC",
-      "format": "float2d"
-    },
-    {
-      "name": "Speed"
+      "name": "VMC"
     }
   ],
   "template": [
     {
       "name": "t.html"
     }
+  ],
+  "settings": [
+       {"shownName": "Nautical speed", "path": "units.nauticalSpeed", "type":"boolean"},
+       {"shownName": "Nautical distance", "path": "units.nauticalDistance", "type":"boolean"}
   ]
 }

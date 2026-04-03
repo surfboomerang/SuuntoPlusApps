@@ -1,1 +1,6 @@
-{}
+{
+    "units": {
+        "nauticalSpeed": false,
+        "nauticalDistance": false
+    }
+}

@@ -1,18 +1,34 @@
-var speed, heading, targetBearing, vmc;
+var speed, heading, targetBearing, targetCoordinates, vmc;
 var nauticalSpeedFormat, nauticalDistanceFormat
 
-var radians_to_degrees =function(radians){
+var radians_to_degrees = function (radians) {
   var pi = Math.PI;
-  return radians * (180/pi);
+  return radians * (180 / pi);
 }
 
 function evaluate(input, output) {
-
+  
   speed = input.Speed;
   heading = radians_to_degrees(input.Heading);
   targetBearing = radians_to_degrees(input.TargetBearing);
+  targetCoordinates = input.TargetCoordinates;
 
-  vmc = speed * Math.cos(heading - targetBearing);
+  if (speed) {
+    vmc = speed * Math.cos(heading - targetBearing);
+  } else {
+    vmc = null;
+  }
+
+  if (vmc > 0) {
+    setStyle("#title", "background-color", "#00FF00");
+  } else {
+    if (vmc < 0) {
+      setStyle("#title", "background-color", "#FF0000");
+    }else{
+      setStyle("#title", "background-color", "#FFFFFF")
+    }
+  }
+
 
   output.VMC = vmc;
 }
@@ -27,26 +43,24 @@ function onEvent(_input, output, eventId) {
 
 function getUserInterface() {
   var speedFormat;
-  if (nauticalSpeedFormat){
+  if (nauticalSpeedFormat) {
     speedFormat = "NauticalSpeed_Fourdigits";
-  }else{
+  } else {
     speedFormat = "Speed_Fourdigits";
   }
 
   var distanceFormat;
-  if (nauticalDistanceFormat){
+  if (nauticalDistanceFormat) {
     distanceFormat = "NauticalDistance_Fivedigits";
-  }else{
+  } else {
     distanceFormat = "Distance_Accurate";
   }
 
 
   return {
     template: "t",
-    speed:{format: speedFormat},
-    distance:{format: distanceFormat}
+    speed: { format: speedFormat },
+    distance: { format: distanceFormat }
   };
 }
-
-// Todo Save VMC in logs
 

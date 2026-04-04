@@ -13,6 +13,11 @@
       "type": "subscribe"
     },
     {
+      "name": "TargetCoordinates",
+      "source": "/Navigation/Targetlocation/Coordinates",
+      "type": "subscribe"
+    },
+    {
       "name": "Heading",
       "source": "/Fusion/Heading",
       "type": "subscribe"
@@ -25,7 +30,8 @@
   ],
   "out": [
     {
-      "name": "VMC"
+      "name": "VMC",
+      "log": true
     }
   ],
   "template": [

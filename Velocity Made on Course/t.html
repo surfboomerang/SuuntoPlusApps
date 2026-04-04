@@ -1,25 +1,27 @@
-<!-- SuuntoPlus: Template with 3 fields (2 alternatives) with units -->
 <uiView>
 
   <div id="suuntoplus">
 
     <!-- Title and its background -->
-    <div class="cm-fg" style="width:100%;height:15%">
-      <div class="sp-t-m p-hc" style="top:calc(60% - 50%e)">
-        VMC
+    <div id=title class="cm-fg" style="width:100%;height:25%">
+      <div class="sp-t-m p-hc" style="top:calc(30% - 50%e)">
+        TARGET
       </div>
+      <div id="titleText" class="sp-t-s p-hc" style="top:calc(70% - 50%e)"> 
+        <eval input="/Navigation/Targetlocation/Coordinates" outputFormat="auto" default="NO TARGET" />
+      </div>
+
     </div>
 
     <!-- vertical separator -->
-    <div class="cm-fg p-hc" style="top:20%;width:2px;height:40%;opacity:0.4"></div>
+    <div class="cm-fg p-hc" style="top:35%;width:2px;height:25%;opacity:0.4"></div>
 
-    <!-- top -->
     <!-- left -->
-    <div class="sp-t-s" style="top:calc(30% - 100%e);left:calc(26% - 50%e)">
+    <div class="sp-t-s" style="top:calc(40% - 100%e);left:calc(26% - 50%e)">
       Speed
     </div>
-    <div class="sp-vertical-center" style="top:32%;left:calc(26% - 50%e)">
-      <span class="sp-d-s f-num">
+    <div class="sp-vertical-center" style="top:42%;left:calc(26% - 50%e)">
+      <span class="sp-d-xs f-num">
         <eval input="/Activity/Current/Speed" outputFormat="{zapp_speed_format}" default="--" />
       </span>
       <span optional>
@@ -28,11 +30,11 @@
     </div>
 
     <!-- right -->
-    <div class="sp-t-s" style="top:calc(30% - 100%e);left:calc(74% - 50%e)">
+    <div class="sp-t-s" style="top:calc(40% - 100%e);left:calc(74% - 50%e)">
       VMC
     </div>
-    <div class="sp-vertical-center" style="top:32%;left:calc(74% - 50%e)">
-      <span class="sp-d-s f-num">
+    <div class="sp-vertical-center" style="top:42%;left:calc(74% - 50%e)">
+      <span class="sp-d-xs f-num">
         <eval input="/Zapp/{zapp_index}/Output/VMC" outputFormat="{zapp_speed_format}" default="--" />
       </span>
       <span optional>
@@ -40,20 +42,20 @@
       </span>
     </div>
 
-
-
     <!-- bottom -->
-    <div class="sp-t-s p-hc" style="top:calc(70% - 50%e)">
+    <div class="sp-t-s p-hc" style="top:calc(65% - 50%e)">
       Distance to target
     </div>
-    <div class="p-hc" style="top:calc(82% - 50%e)">
-      <span class="sp-d-s f-num">
-      <eval input="/Navigation/Poi/Active/Distance" outputFormat="{zapp_distance_format}" default="--" />
+
+    <div class="sp-vertical-center p-hc" style="top:calc(77% - 50%e)">
+      <span class="sp-d-xs f-num">
+        <eval input="/Navigation/Poi/Active/Distance" outputFormat="{zapp_distance_format}" default="--" />
       </span>
-    <span optional class="sp-t-s">
-      <postfix />
-    </span>
+      <span optional>
+        <postfix />
+      </span>
     </div>
+
   </div>
 
 </uiView>

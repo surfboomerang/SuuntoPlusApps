@@ -8,13 +8,13 @@
   "modificationTime": 1773309159,
   "in": [
     {
-      "name": "TargetBearing",
-      "source": "/Navigation/Targetlocation/Bearing",
+      "name": "Distance",
+      "source": "/Navigation/Poi/Active/Distance",
       "type": "subscribe"
     },
     {
-      "name": "TargetCoordinates",
-      "source": "/Navigation/Targetlocation/Coordinates",
+      "name": "Bearing",
+      "source": "/Navigation/Targetlocation/Bearing",
       "type": "subscribe"
     },
     {

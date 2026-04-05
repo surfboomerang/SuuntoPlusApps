@@ -1,22 +1,36 @@
-var speed, heading, targetBearing, targetCoordinates, vmc;
+var speed, heading, bearing, distance, vmc;
 var nauticalSpeedFormat, nauticalDistanceFormat
+var previousDistance
 
-var radians_to_degrees = function (radians) {
-  var pi = Math.PI;
-  return radians * (180 / pi);
+var calculateByDistance = function (distance) {
+  // Low accuracy
+  var difference = previousDistance - distance;
+  previousDistance = distance
+  return difference;
+}
+
+var calculateByBearing = function (speed, heading, bearing) {
+  // Higher accuracy
+  if (speed) {
+    return speed * Math.cos(heading - bearing);
+  } else {
+    return null;
+  }
 }
 
 function evaluate(input, output) {
-  
-  speed = input.Speed;
-  heading = radians_to_degrees(input.Heading);
-  targetBearing = radians_to_degrees(input.TargetBearing);
-  targetCoordinates = input.TargetCoordinates;
 
-  if (speed) {
-    vmc = speed * Math.cos(heading - targetBearing);
+  if (input.Bearing) {
+    setText("#titleText", "Accuracy: HIGH");
+    speed = input.Speed;
+    heading = input.Heading * (180 / Math.PI);
+    bearing = input.Bearing * (180 / Math.PI);
+
+    vmc = calculateByBearing(speed, heading, bearing);
   } else {
-    vmc = null;
+    setText("#titleText", "Accuracy: LOW");
+    distance = input.Distance;
+    vmc = calculateByDistance(distance);
   }
 
   if (vmc > 0) {
@@ -24,7 +38,7 @@ function evaluate(input, output) {
   } else {
     if (vmc < 0) {
       setStyle("#title", "background-color", "#FF0000");
-    }else{
+    } else {
       setStyle("#title", "background-color", "#FFFFFF")
     }
   }

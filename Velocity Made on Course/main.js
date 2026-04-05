@@ -35,14 +35,16 @@ function evaluate(input, output) {
 
   if (vmc > 0) {
     setStyle("#title", "background-color", "#00FF00");
+    setStyle("#title", "color", "#000000");
   } else {
     if (vmc < 0) {
       setStyle("#title", "background-color", "#FF0000");
+      setStyle("#title", "color", "#000000");
     } else {
-      setStyle("#title", "background-color", "#FFFFFF")
+      setStyle("#title", "background-color", null)
+      setStyle("#title", "color", null);
     }
   }
-
 
   output.VMC = vmc;
 }

@@ -1,29 +1,40 @@
 var speed, heading, bearing, vmc;
 var nauticalSpeedFormat, nauticalDistanceFormat
 
+var toDegrees = function (rad) {
+  return rad * 180 / Math.PI;
+}
+
+var toRadians = function (deg) {
+  return deg * Math.PI / 180;
+}
+
 function evaluate(input, output) {
 
+  if (input.Distance) { //check if POI is selected
     speed = input.Speed;
-    heading = input.Heading * (180 / Math.PI);
-    bearing = input.Bearing * (180 / Math.PI);
+    heading = input.Heading;
+    bearing = input.Bearing
 
     vmc = speed * Math.cos(heading - bearing);
 
-
-  if (vmc > 0) {
-    setStyle("#title", "background-color", "#00FF00");
-    setStyle("#title", "color", "#000000");
-  } else {
-    if (vmc < 0) {
-      setStyle("#title", "background-color", "#FF0000");
-      setStyle("#title", "color", "#FFFFFF");
+    if (vmc >= 0) {
+      setStyle("#title", "background-color", "#00FF00");
+      setStyle("#title", "color", "#000000");
     } else {
-      setStyle("#title", "background-color", null)
-      setStyle("#title", "color", null);
+      if (vmc < 0) {
+        setStyle("#title", "background-color", "#FF0000");
+        setStyle("#title", "color", "#FFFFFF");
+      } else {
+        setStyle("#title", "background-color", null)
+        setStyle("#title", "color", null);
+      }
     }
-  }
 
-  output.VMC = vmc;
+    output.VMC = vmc;
+    bearing = (toDegrees(bearing) + 360) % 360 //normalize angle
+    output.Bearing = toRadians(bearing);
+  }
 }
 
 function onLoad(input, output) {
@@ -48,7 +59,6 @@ function getUserInterface() {
   } else {
     distanceFormat = "Distance_Threedigits";
   }
-
 
   return {
     template: "t",

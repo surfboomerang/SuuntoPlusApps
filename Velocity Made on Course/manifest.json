@@ -32,6 +32,9 @@
     {
       "name": "VMC",
       "log": true
+    },
+    {
+      "name": "Bearing"
     }
   ],
   "template": [

@@ -1,37 +1,14 @@
-var speed, heading, bearing, distance, vmc;
+var speed, heading, bearing, vmc;
 var nauticalSpeedFormat, nauticalDistanceFormat
-var previousDistance
-
-var calculateByDistance = function (distance) {
-  // Low accuracy
-  var difference = previousDistance - distance;
-  previousDistance = distance
-  return difference;
-}
-
-var calculateByBearing = function (speed, heading, bearing) {
-  // Higher accuracy
-  if (speed) {
-    return speed * Math.cos(heading - bearing);
-  } else {
-    return null;
-  }
-}
 
 function evaluate(input, output) {
 
-  if (input.Bearing) {
-    setText("#titleText", "Accuracy: HIGH");
     speed = input.Speed;
     heading = input.Heading * (180 / Math.PI);
     bearing = input.Bearing * (180 / Math.PI);
 
-    vmc = calculateByBearing(speed, heading, bearing);
-  } else {
-    setText("#titleText", "Accuracy: LOW");
-    distance = input.Distance;
-    vmc = calculateByDistance(distance);
-  }
+    vmc = speed * Math.cos(heading - bearing);
+
 
   if (vmc > 0) {
     setStyle("#title", "background-color", "#00FF00");
@@ -39,7 +16,7 @@ function evaluate(input, output) {
   } else {
     if (vmc < 0) {
       setStyle("#title", "background-color", "#FF0000");
-      setStyle("#title", "color", "#000000");
+      setStyle("#title", "color", "#FFFFFF");
     } else {
       setStyle("#title", "background-color", null)
       setStyle("#title", "color", null);
@@ -67,9 +44,9 @@ function getUserInterface() {
 
   var distanceFormat;
   if (nauticalDistanceFormat) {
-    distanceFormat = "NauticalDistance_Fivedigits";
+    distanceFormat = "NauticalDistance_Fourdigits";
   } else {
-    distanceFormat = "Distance_Accurate";
+    distanceFormat = "Distance_Threedigits";
   }
 
 

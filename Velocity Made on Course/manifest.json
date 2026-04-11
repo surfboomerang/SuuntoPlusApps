@@ -14,7 +14,7 @@
     },
     {
       "name": "Bearing",
-      "source": "/Navigation/Targetlocation/Bearing",
+      "source": "Navigation/Poi/Active/Bearing",
       "type": "subscribe"
     },
     {

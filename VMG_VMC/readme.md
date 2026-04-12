@@ -35,7 +35,7 @@ Unit selection can be done in the SuuntoPlus app settings:
 
 | Button | Action | 
 | ------  | ------ |
-| UP (hold) | Sets the compass heading as wind direction |
+| UP | Sets the compass heading as wind direction |
 | DOWN | Switch mode between VMG and VMC |
 
 # Manifest

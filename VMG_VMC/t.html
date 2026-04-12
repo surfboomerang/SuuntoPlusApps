@@ -7,20 +7,23 @@
 
       <uiViewSet id="uiViewSetTitle">
 
-        <!-- VMC -->
-        <div>
-          <div class="sp-t-m p-hc" style="top:calc(30% - 50%e)">
-            MARKER
-          </div>
-          <div class="sp-t-s p-hc" style="top:calc(70% - 50%e)">
-            <eval input="/Navigation/Poi/Active/Coordinates" outputFormat="auto" default="--" />
-          </div>
-        </div>
-
         <!-- VMG -->
         <div>
           <div class="sp-t-m p-hc" style="top:calc(30% - 50%e)">
-            WIND
+            VMG
+          </div>
+          <div class="sp-t-s p-hc" style="top:calc(70% - 50%e)">
+           True wind direction
+          </div>
+        </div>
+
+        <!-- VMC -->
+        <div>
+          <div class="sp-t-m p-hc" style="top:calc(30% - 50%e)">
+            VMC
+          </div>
+          <div class="sp-t-s p-hc" style="top:calc(70% - 50%e)">
+            <eval input="/Navigation/Poi/Active/Coordinates" outputFormat="auto" default="No target set" />
           </div>
         </div>
 
@@ -58,6 +61,23 @@
 
     <!-- right -->
     <uiViewSet id="uiViewSetVMG">
+
+      <!-- VMG -->
+      <div>
+        <div class="sp-vertical-center" style="top:23%;left:calc(65% - 50%e)">
+          VMG
+        </div>
+        <div class="sp-vertical-center" style="top:28%;left:calc(75% - 50%e)">
+          <span class="sp-d-s f-num" style="padding-top: 4px;">
+            <eval input="/Zapp/{zapp_index}/Output/VMG" outputFormat="{zapp_speed_format}" default="--" />
+          </span>
+          <span>
+            <postfix />
+          </span>
+        </div>
+      </div>
+
+      <!-- VMC -->
       <div>
         <div class="sp-vertical-center" style="top:23%;left:calc(65% - 50%e)">
           VMC
@@ -72,19 +92,6 @@
         </div>
       </div>
 
-      <div>
-        <div class="sp-vertical-center" style="top:23%;left:calc(65% - 50%e)">
-          VMG
-        </div>
-        <div class="sp-vertical-center" style="top:28%;left:calc(75% - 50%e)">
-          <span class="sp-d-s f-num" style="padding-top: 4px;">
-            <eval input="/Zapp/{zapp_index}/Output/VMG" outputFormat="{zapp_speed_format}" default="--" />
-          </span>
-          <span>
-            <postfix />
-          </span>
-        </div>
-      </div>
     </uiViewSet>
 
     <div class="sp-vertical-center" style="top:48%;left:calc(65% - 50%e)">
@@ -115,7 +122,7 @@
   </div>
 
   <userInput>
-    <pushButton name="up" onLongPressStart="$.put('/Zapp/{zapp_index}/Event', 1, null, 'int32');" />
+    <pushButton name="up" onClick="$.put('/Zapp/{zapp_index}/Event', 1, null, 'int32');" />
     <pushButton name="down" onClick="$.put('/Zapp/{zapp_index}/Event', 2, null, 'int32');" />
   </userInput>
 

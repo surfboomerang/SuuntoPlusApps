@@ -1,6 +1,6 @@
 var speed, heading, bearing, windDirection, vmc, vmg;
 var nauticalSpeedFormat, nauticalDistanceFormat
-var mode = 0 //0=vmc, 1=vmg
+var mode = 0 //0=vmg, 1=vmc
 
 
 var toDegrees = function (rad) {
@@ -34,7 +34,16 @@ function evaluate(input, output) {
   heading = input.Heading;
 
   if (mode == 0) {
-   speed = input.Speed;
+    vmg = speed * Math.cos(heading - windDirection);
+
+    output.Bearing = windDirection;
+    output.VMG = vmg;
+
+    thresholdColor(vmg);
+  }
+
+  if (mode == 1) {
+    speed = input.Speed;
     heading = input.Heading;    
     bearing = input.Bearing
 
@@ -47,14 +56,6 @@ function evaluate(input, output) {
     thresholdColor(vmc);
   }
 
-  if (mode == 1) {
-    vmg = speed * Math.cos(heading - windDirection);
-
-    output.Bearing = windDirection;
-    output.VMG = vmg;
-
-    thresholdColor(vmg);
-  }
 
 }
 
@@ -69,7 +70,7 @@ function onEvent(input, output, eventId) {
     // Up-hold
     case 1:
       windDirection = input.compassHeading;
-      mode = 1;
+      mode = 0;
       break;
 
     // Down

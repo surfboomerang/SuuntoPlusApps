@@ -7,7 +7,7 @@ Apps developed for Suunto watches.
 | App | Description |
 | --- | --- |  
 | [__Notes__](https://github.com/surfboomerang/SuuntoPlusApps/tree/main/Notes) | Store personal notes in the watch
-| [__Velocity Made on Course__](https://github.com/surfboomerang/SuuntoPlusApps/tree/main/VMC_VMG) | Get your VMG and VMC on your sailing activity
+| [__VMG/VMC__](https://github.com/surfboomerang/SuuntoPlusApps/tree/main/VMC_VMG) | Get your VMG and VMC on your sailing activity
 
 ---
 [Official SuuntoPlus site](https://www.suunto.com/Content-pages/suuntoplus/)

@@ -1,8 +1,8 @@
 {
-  "name": "Velocity Made on Course (VMC)",
+  "name": "VMG/VMC",
   "version": "1.0",
   "author": "Surfboomerang",
-  "description": "Calculates the Velocity Made on Course speed",
+  "description": "Calculates the VMG and VMC speeds for sailing activities",
   "type": "feature",
   "usage": "workout",
   "modificationTime": 1773309159,
@@ -23,6 +23,11 @@
       "type": "subscribe"
     },
     {
+      "name": "compassHeading",
+      "source": "/Fusion/Compass/Heading",
+      "type": "subscribe"
+    },
+    {
       "name": "Speed",
       "source": "/Activity/Current/Speed",
       "type": "subscribe"
@@ -31,6 +36,10 @@
   "out": [
     {
       "name": "VMC",
+      "log": true
+    },
+    {
+      "name": "VMG",
       "log": true
     },
     {

@@ -1,0 +1,58 @@
+{
+  "name": "VMG/VMC",
+  "version": "1.0",
+  "author": "Surfboomerang",
+  "description": "Calculates the VMG and VMC speeds for sailing activities",
+  "type": "feature",
+  "usage": "workout",
+  "modificationTime": 1773309159,
+  "in": [
+    {
+      "name": "Distance",
+      "source": "/Navigation/Poi/Active/Distance",
+      "type": "subscribe"
+    },
+    {
+      "name": "Bearing",
+      "source": "Navigation/Poi/Active/Bearing",
+      "type": "subscribe"
+    },
+    {
+      "name": "Heading",
+      "source": "/Fusion/Heading",
+      "type": "subscribe"
+    },
+    {
+      "name": "compassHeading",
+      "source": "/Fusion/Compass/Heading",
+      "type": "subscribe"
+    },
+    {
+      "name": "Speed",
+      "source": "/Activity/Current/Speed",
+      "type": "subscribe"
+    }
+  ],
+  "out": [
+    {
+      "name": "VMC",
+      "log": true
+    },
+    {
+      "name": "VMG",
+      "log": true
+    },
+    {
+      "name": "Bearing"
+    }
+  ],
+  "template": [
+    {
+      "name": "t.html"
+    }
+  ],
+  "settings": [
+       {"shownName": "Nautical speed", "path": "units.nauticalSpeed", "type":"boolean"},
+       {"shownName": "Nautical distance", "path": "units.nauticalDistance", "type":"boolean"}
+  ]
+}

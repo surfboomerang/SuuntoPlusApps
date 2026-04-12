@@ -1,0 +1,129 @@
+<uiView>
+
+  <div id="suuntoplus">
+
+    <!-- Title and its background -->
+    <div id=title class="cm-fg" style="width:100%;height:20%">
+
+      <uiViewSet id="uiViewSetTitle">
+
+        <!-- VMG -->
+        <div>
+          <div class="sp-t-m p-hc" style="top:calc(30% - 50%e)">
+            VMG
+          </div>
+          <div class="sp-t-s p-hc" style="top:calc(70% - 50%e)">
+           True wind direction
+          </div>
+        </div>
+
+        <!-- VMC -->
+        <div>
+          <div class="sp-t-m p-hc" style="top:calc(30% - 50%e)">
+            VMC
+          </div>
+          <div class="sp-t-s p-hc" style="top:calc(70% - 50%e)">
+            <eval input="/Navigation/Poi/Active/Coordinates" outputFormat="auto" default="No target set" />
+          </div>
+        </div>
+
+      </uiViewSet>
+    </div>
+
+
+    <!-- vertical separator -->
+    <div class="cm-fg p-hc" style="top:25%;width:2px;height:45%;opacity:0.4"></div>
+
+    <!-- left -->
+    <div class="sp-vertical-center" style="top:23%;left:calc(20% - 50%e)">
+      Speed
+    </div>
+    <div class="sp-vertical-center" style="top:28%;left:calc(30% - 50%e)">
+      <span class="sp-d-s f-num" style="padding-top: 4px;">
+        <eval input="/Activity/Current/Speed" outputFormat="{zapp_speed_format}" default="--" />
+      </span>
+      <span>
+        <postfix />
+      </span>
+    </div>
+
+    <div class="sp-vertical-center" style="top:48%;left:calc(20% - 50%e)">
+      Heading
+    </div>
+    <div class="sp-vertical-center" style="top:53%;left:calc(30% - 50%e)">
+      <span class="sp-d-s f-num" style="padding-top: 4px;">
+        <eval input="/Fusion/Heading" outputFormat="CompassHeadingDeg_Accurate" default="--" />
+      </span>
+      <span>
+        <postfix />
+      </span>
+    </div>
+
+    <!-- right -->
+    <uiViewSet id="uiViewSetVMG">
+
+      <!-- VMG -->
+      <div>
+        <div class="sp-vertical-center" style="top:23%;left:calc(65% - 50%e)">
+          VMG
+        </div>
+        <div class="sp-vertical-center" style="top:28%;left:calc(75% - 50%e)">
+          <span class="sp-d-s f-num" style="padding-top: 4px;">
+            <eval input="/Zapp/{zapp_index}/Output/VMG" outputFormat="{zapp_speed_format}" default="--" />
+          </span>
+          <span>
+            <postfix />
+          </span>
+        </div>
+      </div>
+
+      <!-- VMC -->
+      <div>
+        <div class="sp-vertical-center" style="top:23%;left:calc(65% - 50%e)">
+          VMC
+        </div>
+        <div class="sp-vertical-center" style="top:28%;left:calc(75% - 50%e)">
+          <span class="sp-d-s f-num" style="padding-top: 4px;">
+            <eval input="/Zapp/{zapp_index}/Output/VMC" outputFormat="{zapp_speed_format}" default="--" />
+          </span>
+          <span>
+            <postfix />
+          </span>
+        </div>
+      </div>
+
+    </uiViewSet>
+
+    <div class="sp-vertical-center" style="top:48%;left:calc(65% - 50%e)">
+      Bearing
+    </div>
+    <div class="sp-vertical-center" style="top:53%;left:calc(75% - 50%e)">
+      <span class="sp-d-s f-num" style="padding-top: 4px;">
+        <eval input="/Zapp/{zapp_index}/Output/Bearing" outputFormat="CompassHeadingDeg_Accurate" default="--" />
+      </span>
+      <span>
+        <postfix />
+      </span>
+    </div>
+
+    <!-- bottom -->
+    <div class="sp-vertical-center p-hc" style="top:73%">
+      Distance
+    </div>
+    <div class="sp-vertical-center p-hc" style="top:78%">
+      <span class="sp-d-s f-num" style="padding-top: 4px;">
+        <eval input="/Navigation/Poi/Active/Distance" outputFormat="{zapp_distance_format}" default="--" />
+      </span>
+      <span>
+        <postfix>nmi</postfix>
+      </span>
+    </div>
+
+  </div>
+
+  <userInput>
+    <pushButton name="up" onClick="$.put('/Zapp/{zapp_index}/Event', 1, null, 'int32');" />
+    <pushButton name="down" onClick="$.put('/Zapp/{zapp_index}/Event', 2, null, 'int32');" />
+  </userInput>
+
+</uiView>

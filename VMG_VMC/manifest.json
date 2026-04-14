@@ -1,6 +1,6 @@
 {
   "name": "VMG/VMC",
-  "version": "1.0",
+  "version": "1.1",
   "author": "Surfboomerang",
   "description": "Calculates the VMG and VMC speeds for sailing activities",
   "type": "feature",
@@ -49,6 +49,9 @@
   "template": [
     {
       "name": "t.html"
+    },
+    {
+      "name": "p.html"
     }
   ],
   "settings": [

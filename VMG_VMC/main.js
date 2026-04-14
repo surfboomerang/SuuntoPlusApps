@@ -2,6 +2,14 @@ var speed, heading, bearing, windDirection, vmc, vmg;
 var nauticalSpeedFormat, nauticalDistanceFormat
 var mode = 0 //0=vmg, 1=vmc
 
+var currentTemplate = 't';
+var popupTimer = 0;
+
+var changeView = function(template) {
+  currentTemplate = template;
+  unload('_cm'); // Unload & reload the screen to run getUserInterface
+};
+
 
 var toDegrees = function (rad) {
   return rad * 180 / Math.PI;
@@ -27,6 +35,14 @@ var thresholdColor = function (speed) {
 }
 
 function evaluate(input, output) {
+  if(popupTimer>0){
+    popupTimer--;
+  }
+  
+  if(popupTimer== 0 && currentTemplate != 't'){
+    changeView('t');
+  }
+
   navigate("#uiViewSetTitle", mode);
   navigate("#uiViewSetVMG", mode);
 
@@ -67,10 +83,12 @@ function onLoad(input, output) {
 function onEvent(input, output, eventId) {
   switch (eventId) {
 
-    // Up-hold
+    // Up
     case 1:
       windDirection = input.compassHeading;
       mode = 0;
+      changeView('p');
+      popupTimer = 3;
       break;
 
     // Down
@@ -80,6 +98,11 @@ function onEvent(input, output, eventId) {
       } else {
         mode = 1;
       }
+      break;
+    
+    // Dismiss popup
+    case 3:
+      changeView('t');
       break;
 
   }
@@ -101,7 +124,7 @@ function getUserInterface() {
   }
 
   return {
-    template: 't',
+    template: currentTemplate,
     speed: { format: speedFormat },
     distance: { format: distanceFormat }
   };

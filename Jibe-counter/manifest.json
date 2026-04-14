@@ -1,0 +1,48 @@
+{
+  "name": "Jibe Counter",
+  "version": "1.0",
+  "author": "Author",
+  "description": "Sports app",
+  "type": "feature",
+  "usage": "workout",
+  "modificationTime": 1776081889,
+  "in": [
+    {
+      "name": "Heading",
+      "source": "/Fusion/Heading",
+      "type": "subscribe"
+    },
+    {
+      "name": "isCompassHeading",
+      "source": "/Fusion/Heading/IsCompass",
+      "type": "subscribe"
+    },
+    {
+      "name": "Speed",
+      "source": "/Activity/Current/Speed",
+      "type": "subscribe"
+    }
+  ],
+  "out": [
+    {
+      "name": "Tacks"
+    },
+    {
+      "name": "Jibes"
+    },
+    {
+      "name": "PlaningJibes"
+    },
+    {
+      "name": "AoA"
+    },
+    {
+      "name": "WindDirection"
+    }
+  ],
+  "template": [
+    {
+      "name": "t.html"
+    }
+  ]
+}

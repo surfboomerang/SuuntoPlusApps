@@ -1,0 +1,49 @@
+<uiView>
+
+  <div id="suuntoplus">
+
+    <div class="cm-fg" style="width:100%;height:15%;">
+      <div class="sp-t-s p-hc" style="top:calc(30% - 50%e);">Wind</div>
+      <div class="sp-t-s p-hc" style="top:calc(70% - 50%e);">
+              <span>
+        <eval input="/Zapp/{zapp_index}/Output/WindDirection" outputFormat="CompassHeadingDeg_Accurate" default="--" />
+      </span>
+      <span>
+        <postfix />
+      </span>
+      </div>
+    </div>
+
+    <div class="cm-fg p-hc" style="top:25%;width:2px;height:35%;opacity:0.4"></div>
+
+    <div class="cm-mid sp-t-s" style="top:calc(30% - 100%e);left:calc(25% - 50%e);">Tacks</div>
+
+    <div class="sp-d-s f-num" style="top:calc(38% - 50%e);left:calc(25% - 50%e);">
+      <eval input="/Zapp/{zapp_index}/Output/Tacks" outputFormat="Count_Threedigits" default="0" />
+    </div>
+
+    <div class="cm-mid sp-t-s" style="top:calc(30% - 100%e);left:calc(75% - 50%e);">Jibes</div>
+    <div class="sp-d-s f-num" style="top:calc(38% - 50%e);left:calc(75% - 50%e);">
+      <eval input="/Zapp/{zapp_index}/Output/Jibes" outputFormat="Count_Threedigits" default="0" />
+    </div>
+
+
+    <div class="cm-mid sp-t-s" style="top:calc(60% - 100%e);left:calc(75% - 50%e);">Planing Jibes</div>
+    <div class=" sp-d-s f-num" style="top:calc(68% - 50%e);left:calc(75% - 50%e);">
+      <eval input="/Zapp/{zapp_index}/Output/PlaningJibes" outputFormat="Count_Threedigits" default="0" />
+    </div>
+
+    <div class="cm-mid sp-t-s" style="top:calc(60% - 100%e);left:calc(25% - 50%e);">Angle of Attack</div>
+    <div class=" sp-d-s" style="top:calc(68% - 50%e);left:calc(25% - 50%e);">
+      <span>
+        <eval input="/Zapp/{zapp_index}/Output/AoA" outputFormat="CompassHeadingDeg_Accurate" default="--" />
+      </span>
+      <span>
+        <postfix />
+      </span>
+    </div>
+
+
+  </div>
+
+</uiView>

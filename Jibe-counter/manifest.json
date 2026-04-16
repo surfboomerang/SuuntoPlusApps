@@ -1,8 +1,8 @@
 {
   "name": "Jibe Counter",
   "version": "1.0",
-  "author": "Author",
-  "description": "Sports app",
+  "author": "Surfboomerang",
+  "description": "Count the number of jibes and tacks",
   "type": "feature",
   "usage": "workout",
   "modificationTime": 1776081889,
@@ -13,8 +13,8 @@
       "type": "subscribe"
     },
     {
-      "name": "isCompassHeading",
-      "source": "/Fusion/Heading/IsCompass",
+      "name": "compassHeading",
+      "source": "/Fusion/Compass/Heading",
       "type": "subscribe"
     },
     {
@@ -43,6 +43,12 @@
   "template": [
     {
       "name": "t.html"
+    },
+    {
+      "name": "p1.html"
+    },
+    {
+      "name": "p2.html"
     }
   ]
 }

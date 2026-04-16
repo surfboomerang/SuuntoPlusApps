@@ -5,12 +5,13 @@
     <div class="cm-fg" style="width:100%;height:15%;">
       <div class="sp-t-s p-hc" style="top:calc(30% - 50%e);">Wind</div>
       <div class="sp-t-s p-hc" style="top:calc(70% - 50%e);">
-              <span>
-        <eval input="/Zapp/{zapp_index}/Output/WindDirection" outputFormat="CompassHeadingDeg_Accurate" default="--" />
-      </span>
-      <span>
-        <postfix />
-      </span>
+        <span>
+          <eval input="/Zapp/{zapp_index}/Output/WindDirection" outputFormat="CompassHeadingDeg_Accurate"
+            default="--" />
+        </span>
+        <span>
+          <postfix />
+        </span>
       </div>
     </div>
 
@@ -45,5 +46,9 @@
 
 
   </div>
+
+  <userInput>
+    <pushButton name="up" type="lock" onClick="$.put('/Zapp/{zapp_index}/Event', 1, null, 'int32');" />
+  </userInput>
 
 </uiView>

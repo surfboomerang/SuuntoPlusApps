@@ -1,7 +1,6 @@
 var segment = [];
 var windDirection;
-var turnAngle = 120, tackAngle = 45, jibeAngle = 45, planeSpeed = 5;
-var tacks = 0, jibes = 0, planingJibes = 0;
+var tacks = 0, jibes = 0, planingJibes = 0, legDistance = 0, previousDistance = 0;
 var waitCounter = 0;
 
 var currentTemplate = 'p1';
@@ -19,10 +18,6 @@ var toRadians = function (deg) {
   return deg * Math.PI / 180;
 }
 
-var setWaitCounter = function () {
-  waitCounter = 10;
-}
-
 var minSpeed = function (inputArray) {
   var minSpeed = 999;
   for (var i = 0; i < inputArray.length; i++) {
@@ -37,20 +32,18 @@ var analyzeTurn = function (inputArray) {
     var AoA = inputArray[i].AoA
 
     // if heading is within the tack range
-    if (AoA < 0 + tackAngle) {
+    if (AoA < 0 + 45) {
       tacks++;
-      setWaitCounter();
       break;
     }
 
     //if heading is within the jibe range
-    if (AoA > 180 - jibeAngle) {
-      if (minSpeed(segment) > planeSpeed) {
+    if (AoA > 180 - 45) {
+      if (minSpeed(segment) > 5) {
         planingJibes++;
       } else {
         jibes++
       }
-      setWaitCounter();
       break;
     }
   }
@@ -70,13 +63,15 @@ function evaluate(input, output) {
       segment.shift();
     }
 
-    if (waitCounter == 0) {
+    legDistance += input.Distance - previousDistance;
+    previousDistance = input.Distance;
+
+    if (legDistance > 50) {
       // if the angle difference between the first and the last element of the segment is more than the turn angle, assume a turn has performed
-      if ((Math.abs(toDegrees(segment[0].hdg) - toDegrees(segment[segment.length - 1].hdg))) > turnAngle) {
+      if ((Math.abs(toDegrees(segment[0].hdg) - toDegrees(segment[segment.length - 1].hdg))) > 120) {
         analyzeTurn(segment);
+        legDistance = 0;
       }
-    } else {
-      waitCounter--;
     }
 
     output.WindDirection = toRadians(windDirection);
@@ -84,6 +79,7 @@ function evaluate(input, output) {
     output.Jibes = jibes;
     output.PlaningJibes = planingJibes;
     output.AoA = toRadians(segment[segment.length - 1].AoA);
+    output.legDistance = legDistance;
 
   }
 }
@@ -109,6 +105,25 @@ function getUserInterface() {
   };
 }
 
-
 function getSummaryOutputs(input, output) {
+  return [
+    {
+      id: 'tacks',
+      name: 'Tacks',
+      format: 'Count_Fourdigits',
+      value: output.Tacks
+    },
+    {
+      id: 'jibes',
+      name: 'Jibes',
+      format: 'Count_Fourdigits',
+      value: output.Jibes
+    },
+    {
+      id: 'planingJibes',
+      name: 'Planing jibes',
+      format: 'Count_Fourdigits',
+      value: output.PlaningJibes
+    }
+  ];
 }

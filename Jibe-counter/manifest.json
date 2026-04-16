@@ -21,6 +21,11 @@
       "name": "Speed",
       "source": "/Activity/Current/Speed",
       "type": "subscribe"
+    },
+    {
+      "name": "Distance",
+      "source": "/Activity/Current/Distance",
+      "type": "subscribe"
     }
   ],
   "out": [
@@ -38,6 +43,9 @@
     },
     {
       "name": "WindDirection"
+    },
+    {
+      "name": "legDistance"
     }
   ],
   "template": [

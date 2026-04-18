@@ -2,7 +2,7 @@
   "name": "Jibe Counter",
   "version": "1.0",
   "author": "Surfboomerang",
-  "description": "Count the number of jibes and tacks",
+  "description": "Count the number of jibes and tacks during your sailing activity",
   "type": "feature",
   "usage": "workout",
   "modificationTime": 1776081889,
@@ -39,7 +39,7 @@
       "name": "PlaningJibes"
     },
     {
-      "name": "AoA"
+      "name": "TWA"
     },
     {
       "name": "WindDirection"

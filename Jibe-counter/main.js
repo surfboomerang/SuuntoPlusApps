@@ -1,7 +1,7 @@
 var segment = [];
 var windDirection;
 var tacks = 0, jibes = 0, planingJibes = 0, legDistance = 0, previousDistance = 0;
-var waitCounter = 0;
+var popupTimer = 0;
 
 var currentTemplate = 'p1';
 
@@ -29,16 +29,16 @@ var minSpeed = function (inputArray) {
 var analyzeTurn = function (inputArray) {
 
   for (var i = 0; i < inputArray.length; i++) {
-    var AoA = inputArray[i].AoA
+    var TWA = inputArray[i].twa
 
     // if heading is within the tack range
-    if (AoA < 0 + 45) {
+    if (TWA < 0 + 45) {
       tacks++;
       break;
     }
 
     //if heading is within the jibe range
-    if (AoA > 180 - 45) {
+    if (TWA > 180 - 45) {
       if (minSpeed(segment) > 5) {
         planingJibes++;
       } else {
@@ -52,11 +52,19 @@ var analyzeTurn = function (inputArray) {
 function evaluate(input, output) {
 
   if (windDirection) {
+    if (popupTimer > 0) {
+      popupTimer--;
+    }
+
+    if (popupTimer == 0 && currentTemplate != 't') {
+      changeView('t');
+    }
+
 
     segment.push({
       spd: input.Speed,
       hdg: input.Heading,
-      AoA: Math.abs(((toDegrees(input.Heading)-windDirection+540)%360)-180) 
+      twa: Math.abs(((toDegrees(input.Heading) - windDirection + 540) % 360) - 180)
     });
 
     if (segment.length > 9) {
@@ -66,7 +74,7 @@ function evaluate(input, output) {
     legDistance += input.Distance - previousDistance;
     previousDistance = input.Distance;
 
-    if (legDistance > 50) {
+    if (legDistance > 30) {
       // if the angle difference between the first and the last element of the segment is more than the turn angle, assume a turn has performed
       if ((Math.abs(toDegrees(segment[0].hdg) - toDegrees(segment[segment.length - 1].hdg))) > 120) {
         analyzeTurn(segment);
@@ -78,7 +86,7 @@ function evaluate(input, output) {
     output.Tacks = tacks;
     output.Jibes = jibes;
     output.PlaningJibes = planingJibes;
-    output.AoA = toRadians(segment[segment.length - 1].AoA);
+    output.TWA = toRadians(segment[segment.length - 1].twa);
     output.legDistance = legDistance;
 
   }
@@ -93,7 +101,8 @@ function onEvent(input, output, eventId) {
     // Up
     case 1:
       windDirection = toDegrees(input.compassHeading);
-      changeView('t');
+      changeView('p2');
+      popupTimer = 3;
       break;
 
   }

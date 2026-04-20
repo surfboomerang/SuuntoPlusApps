@@ -1,8 +1,8 @@
 {
   "name": "Jibe Counter",
   "version": "1.0",
-  "author": "Author",
-  "description": "Sports app",
+  "author": "Surfboomerang",
+  "description": "Count the number of jibes and tacks during your sailing activity",
   "type": "feature",
   "usage": "workout",
   "modificationTime": 1776081889,
@@ -13,13 +13,18 @@
       "type": "subscribe"
     },
     {
-      "name": "isCompassHeading",
-      "source": "/Fusion/Heading/IsCompass",
+      "name": "compassHeading",
+      "source": "/Fusion/Compass/Heading",
       "type": "subscribe"
     },
     {
       "name": "Speed",
       "source": "/Activity/Current/Speed",
+      "type": "subscribe"
+    },
+    {
+      "name": "Distance",
+      "source": "/Activity/Current/Distance",
       "type": "subscribe"
     }
   ],
@@ -34,15 +39,24 @@
       "name": "PlaningJibes"
     },
     {
-      "name": "AoA"
+      "name": "TWA"
     },
     {
       "name": "WindDirection"
+    },
+    {
+      "name": "legDistance"
     }
   ],
   "template": [
     {
       "name": "t.html"
+    },
+    {
+      "name": "p1.html"
+    },
+    {
+      "name": "p2.html"
     }
   ]
 }

@@ -2,48 +2,91 @@
 
   <div id="suuntoplus">
 
-    <div class="cm-fg" style="width:100%;height:15%;">
-      <div class="sp-t-s p-hc" style="top:calc(30% - 50%e);">Wind</div>
-      <div class="sp-t-s p-hc" style="top:calc(70% - 50%e);">
-              <span>
-        <eval input="/Zapp/{zapp_index}/Output/WindDirection" outputFormat="CompassHeadingDeg_Accurate" default="--" />
-      </span>
-      <span>
-        <postfix />
-      </span>
+    <div class="cm-fg" style="width:100%;height:22%;">
+      <div class="sp-t-m p-hc" style="top:calc(25% - 50%e);">Wind</div>
+      <div class="sp-t-m p-hc" style="top:calc(70% - 50%e);">
+        <span class="f-ico" style="padding-right:4px">&#xF398;</span>
+        <span>
+          <eval input="/Zapp/{zapp_index}/Output/WindDirection" outputFormat="CompassHeadingDeg_Accurate"
+            default="--" />
+        </span>
+        <span>
+          <postfix />
+        </span>
+        <span class="f-ico" style="padding-left:25px;padding-right:4px">&#xF255;</span>
+        <span>
+          <eval input="/Zapp/{zapp_index}/Output/TWA" outputFormat="CompassHeadingDeg_Accurate"
+            default="--" />
+        </span>
+        <span>
+          <postfix />
+        </span>
       </div>
     </div>
 
-    <div class="cm-fg p-hc" style="top:25%;width:2px;height:35%;opacity:0.4"></div>
+    <div class="cm-fg p-hc" style="top:25%;width:2px;height:43%;opacity:0.4"></div>
 
-    <div class="cm-mid sp-t-s" style="top:calc(30% - 100%e);left:calc(25% - 50%e);">Tacks</div>
-
-    <div class="sp-d-s f-num" style="top:calc(38% - 50%e);left:calc(25% - 50%e);">
-      <eval input="/Zapp/{zapp_index}/Output/Tacks" outputFormat="Count_Threedigits" default="0" />
+    <!-- Tacks -->
+    <div class="cm-mid sp-t-s" style="top:calc(32% - 100%e);left:calc(25% - 50%e)">
+      Tacks
     </div>
 
-    <div class="cm-mid sp-t-s" style="top:calc(30% - 100%e);left:calc(75% - 50%e);">Jibes</div>
-    <div class="sp-d-s f-num" style="top:calc(38% - 50%e);left:calc(75% - 50%e);">
-      <eval input="/Zapp/{zapp_index}/Output/Jibes" outputFormat="Count_Threedigits" default="0" />
-    </div>
-
-
-    <div class="cm-mid sp-t-s" style="top:calc(60% - 100%e);left:calc(75% - 50%e);">Planing Jibes</div>
-    <div class=" sp-d-s f-num" style="top:calc(68% - 50%e);left:calc(75% - 50%e);">
-      <eval input="/Zapp/{zapp_index}/Output/PlaningJibes" outputFormat="Count_Threedigits" default="0" />
-    </div>
-
-    <div class="cm-mid sp-t-s" style="top:calc(60% - 100%e);left:calc(25% - 50%e);">Angle of Attack</div>
-    <div class=" sp-d-s" style="top:calc(68% - 50%e);left:calc(25% - 50%e);">
+    <div class="sp-d-s f-num" style="top:calc(43% - 50%e);left:calc(25% - 50%e)">
+      <span class="f-ico" style="padding-right:4px">&#xE364;</span>
       <span>
-        <eval input="/Zapp/{zapp_index}/Output/AoA" outputFormat="CompassHeadingDeg_Accurate" default="--" />
+      <eval input="/Zapp/{zapp_index}/Output/Tacks" outputFormat="Count_Threedigits" default="0" />
+      </span>
+    </div>
+
+    <!-- Jibes -->
+    <div class="cm-mid sp-t-s" style="top:calc(32% - 100%e);left:calc(75% - 50%e)">
+      Jibes
+    </div>
+
+    <!-- non-planing jibes -->
+    <div class="sp-d-s f-num p-hc" style="top:calc(43% - 50%e);left:calc(75% - 50%e)">
+      <span>
+        <eval input="/Zapp/{zapp_index}/Output/Jibes" outputFormat="Count_Threedigits" default="0" />
+      </span>
+      <span class="f-ico" style="padding-left:4px">&#xE372;</span>
+    </div>
+
+    <!-- Planing jibes -->
+    <div class="sp-d-s f-num p-hc" style="top:calc(62% - 50%e);left:calc(75% - 50%e)">
+      <span>
+        <eval input="/Zapp/{zapp_index}/Output/PlaningJibes" outputFormat="Count_Threedigits" default="0" />
       </span>
       <span>
+      <span class="f-ico" style="padding-left:4px;top:100%">&#xF108;</span>
+      <span class="f-ico" style="padding-left:4px">&#xE372;</span>
+    </span>
+    </div>
+
+    <!-- Speed -->
+    <div class="sp-d-s f-num p-hc" style="top:calc(62% - 50%e);left:calc(25% - 50%e)">
+      <span class="f-ico" style="padding-right:4px">&#xF102;</span>
+      <span>
+        <eval input="/Zapp/{zapp_index}/Output/legDistance" outputFormat="Distance_Accurate" default="0" />
+      </span>
+      <span class="cm-mid sp-t-s">
         <postfix />
       </span>
     </div>
 
-
+    <!-- Leg distance -->
+    <div class="f-ico p-hc" style="top:calc(80% - 100%e);">&#xF103;</div>
+    <div class="sp-d-s" style="top:calc(80% - 50%e);width: 100%;height: 30%;">
+      <span class="p-hc" style="margin-top:13%;">
+        <eval input="/Activity/Current/Speed" outputFormat="Speed_Fourdigits" default="0" />
+      </span>
+      <span class="cm-mid sp-t-s" style="left:calc(62% - 50%e);margin-top: 7%;">
+        <postfix />
+      </span>
+    </div>
   </div>
+
+  <userInput>
+    <pushButton name="up" type="lock" onClick="$.put('/Zapp/{zapp_index}/Event', 1, null, 'int32');" />
+  </userInput>
 
 </uiView>

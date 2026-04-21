@@ -1,9 +1,10 @@
 var segment = [];
-var windDirection;
+var windDirection, nauticalSpeedFormat, nauticalDistanceFormat;
 var tacks = 0, jibes = 0, planingJibes = 0, legDistance = 0, previousDistance = 0;
 var popupTimer = 0;
 
 var currentTemplate = 'p1';
+var isPaused = false;
 
 var changeView = function (template) {
   currentTemplate = template;
@@ -49,6 +50,14 @@ var analyzeTurn = function (inputArray) {
   }
 }
 
+function onExercisePause(input, output) {
+  isPaused = true;
+}
+
+function onExerciseContinue(input, output) {
+  isPaused = false
+}
+
 function evaluate(input, output) {
 
   if (windDirection) {
@@ -60,25 +69,27 @@ function evaluate(input, output) {
       changeView('t');
     }
 
+    if (!isPaused) {
+      segment.push({
+        spd: input.Speed,
+        hdg: input.Heading,
+        twa: Math.abs(((toDegrees(input.Heading) - windDirection + 540) % 360) - 180)
+      });
 
-    segment.push({
-      spd: input.Speed,
-      hdg: input.Heading,
-      twa: Math.abs(((toDegrees(input.Heading) - windDirection + 540) % 360) - 180)
-    });
 
-    if (segment.length > 9) {
-      segment.shift();
-    }
+      if (segment.length > 9) {
+        segment.shift();
+      }
 
-    legDistance += input.Distance - previousDistance;
-    previousDistance = input.Distance;
+      legDistance += input.Distance - previousDistance;
+      previousDistance = input.Distance;
 
-    if (legDistance > 30) {
-      // if the angle difference between the first and the last element of the segment is more than the turn angle, assume a turn has performed
-      if ((Math.abs(toDegrees(segment[0].hdg) - toDegrees(segment[segment.length - 1].hdg))) > 120) {
-        analyzeTurn(segment);
-        legDistance = 0;
+      if (legDistance > 30 && segment[segment.length - 1].spd > 0.5) {
+        // if the angle difference between the first and the last element of the segment is more than the turn angle, assume a turn has performed
+        if ((Math.abs(toDegrees(segment[0].hdg) - toDegrees(segment[segment.length - 1].hdg))) > 120) {
+          analyzeTurn(segment);
+          legDistance = 0;
+        }
       }
     }
 
@@ -93,6 +104,8 @@ function evaluate(input, output) {
 }
 
 function onLoad(input, output) {
+  nauticalSpeedFormat = localStorage.getObject('units').nauticalSpeed;
+  nauticalDistanceFormat = localStorage.getObject('units').nauticalDistance;
 }
 
 function onEvent(input, output, eventId) {
@@ -109,8 +122,24 @@ function onEvent(input, output, eventId) {
 }
 
 function getUserInterface() {
+  var speedFormat;
+  if (nauticalSpeedFormat) {
+    speedFormat = "NauticalSpeed_Fourdigits";
+  } else {
+    speedFormat = "Speed_Fourdigits";
+  }
+
+  var distanceFormat;
+  if (nauticalDistanceFormat) {
+    distanceFormat = "NauticalDistance_Fourdigits";
+  } else {
+    distanceFormat = "Distance_Threedigits";
+  }
+
   return {
-    template: currentTemplate
+    template: currentTemplate,
+    speed: { format: speedFormat },
+    distance: { format: distanceFormat }
   };
 }
 

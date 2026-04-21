@@ -48,4 +48,7 @@ The app shows the following information:
 | legDistance | Distance of the current leg | 
 
 ## Settings
-None
+| Name | Type | Description |
+| --- | -----| ------------| 
+| nauticalSpeed | boolean | Switch to show speeds in knots instead of km/h or mph | 
+| nauticalDistance  | boolean | Switch to show distance in nautical miles instead of kilometers/miles |

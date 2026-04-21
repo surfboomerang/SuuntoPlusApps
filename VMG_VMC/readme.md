@@ -57,4 +57,7 @@ Unit selection can be done in the SuuntoPlus app settings:
 | Bearing | The bearing to the target |
 
 ## Settings
-None
+| Name | Type | Description |
+| --- | -----| ------------| 
+| nauticalSpeed | boolean | Switch to show speeds in knots instead of km/h or mph | 
+| nauticalDistance  | boolean | Switch to show distance in nautical miles instead of kilometers/miles |

@@ -40,7 +40,7 @@ var analyzeTurn = function (inputArray) {
 
     //if heading is within the jibe range
     if (TWA > 180 - 45) {
-      if (minSpeed(segment) > 5) {
+      if (minSpeed(segment) > 5.5) {
         planingJibes++;
       } else {
         jibes++
@@ -77,7 +77,7 @@ function evaluate(input, output) {
       });
 
 
-      if (segment.length > 9) {
+      if (segment.length > 14) {
         segment.shift();
       }
 
@@ -86,7 +86,7 @@ function evaluate(input, output) {
 
       if (legDistance > 30 && segment[segment.length - 1].spd > 0.5) {
         // if the angle difference between the first and the last element of the segment is more than the turn angle, assume a turn has performed
-        if ((Math.abs(toDegrees(segment[0].hdg) - toDegrees(segment[segment.length - 1].hdg))) > 120) {
+        if ((Math.abs(toDegrees(segment[0].hdg) - toDegrees(segment[segment.length - 7].hdg))) > 140) {
           analyzeTurn(segment);
           legDistance = 0;
         }

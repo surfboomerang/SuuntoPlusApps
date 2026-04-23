@@ -61,11 +61,11 @@
     <div class="cm-mid sp-t-s" style="top:calc(56% - 100%e);left:calc(25% - 50%e)">
       Leg Distance
     </div>
-    <div class="sp-d-s f-num p-hc" style="top:calc(63% - 50%e);left:calc(25% - 50%e)">
-      <span>
+    <div class="sp-d-s f-num p-hc" style="top:calc(63% - 50%e);left:calc(25% - 50%e);width:50%">
+      <span class="p-hc">
         <eval input="/Zapp/{zapp_index}/Output/legDistance" outputFormat="{zapp_distance_format}" default="--" />
       </span>
-      <span class="cm-mid sp-t-s" style="padding-top:6px; padding-left:4px">
+      <span class="cm-mid sp-t-s" style="padding-top:6px;left:75%">
         <postfix />
       </span>
     </div>
@@ -74,11 +74,11 @@
     <div class="cm-mid sp-t-s p-hc" style="top:calc(80% - 100%e)">
       Speed
     </div>
-    <div class="sp-d-s p-hc" style="top:calc(87% - 50%e)">
-      <span>
+    <div class="sp-d-s" style="top:calc(87% - 50%e);width:100%;">
+      <span class="p-hc">
         <eval input="/Activity/Current/Speed" outputFormat="{zapp_speed_format}" default="--" />
       </span>
-      <span class="cm-mid sp-t-s" style="padding-top:6px; padding-left:4px">
+      <span class="cm-mid sp-t-s" style="padding-top:6px;left:63%">
         <postfix />
       </span>
     </div>

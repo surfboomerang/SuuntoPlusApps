@@ -7,7 +7,7 @@
 
       <div class="sp-t-m" style="top:calc(70% - 50%e);left:calc(35% - 50%e)">
         <span class="f-ico" style="padding-right:4px">&#xF398;</span>
-        <span>
+        <span class="f-num">
           <eval input="/Zapp/{zapp_index}/Output/WindDirection" outputFormat="CompassHeadingDeg_Accurate"
             default="--" />
         </span>
@@ -18,7 +18,7 @@
 
       <div class="sp-t-m" style="top:calc(70% - 50%e);left:calc(60% - 50%e)">
         <span class="f-ico" style="padding-left:25px;padding-right:4px">&#xF255;</span>
-        <span>
+        <span class="f-num">
           <eval input="/Zapp/{zapp_index}/Output/TWA" outputFormat="CompassHeadingDeg_Accurate" default="--" />
         </span>
         <span>
@@ -61,26 +61,16 @@
     <div class="cm-mid sp-t-s" style="top:calc(56% - 100%e);left:calc(25% - 50%e)">
       Leg Distance
     </div>
-    <div class="sp-d-s f-num p-hc" style="top:calc(63% - 50%e);left:calc(25% - 50%e);width:50%">
-      <span class="p-hc">
+    <div class="sp-d-s f-num p-hc" style="top:calc(63% - 50%e);left:calc(25% - 50%e)">
         <eval input="/Zapp/{zapp_index}/Output/legDistance" outputFormat="{zapp_distance_format}" default="--" />
-      </span>
-      <span class="cm-mid sp-t-s" style="padding-top:6px;left:75%">
-        <postfix />
-      </span>
     </div>
 
     <!-- Speed -->
     <div class="cm-mid sp-t-s p-hc" style="top:calc(80% - 100%e)">
       Speed
     </div>
-    <div class="sp-d-s" style="top:calc(87% - 50%e);width:100%;">
-      <span class="p-hc">
+    <div class="sp-d-s p-hc" style="top:calc(87% - 50%e)">
         <eval input="/Activity/Current/Speed" outputFormat="{zapp_speed_format}" default="--" />
-      </span>
-      <span class="cm-mid sp-t-s" style="padding-top:6px;left:63%">
-        <postfix />
-      </span>
     </div>
 
   </div>
